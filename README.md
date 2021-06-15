@@ -1,5 +1,5 @@
 # jARVIS
-it's an voice assistant
+#it's an voice assistant
 
 
 import speech_recognition as sr
@@ -21,6 +21,8 @@ def speak(text):
     speaker.runAndWait()
 va_name = 'jarvis'
 speak('i am your '+va_name+' tell me boss')
+
+
 def take_command():
     command=''
     try:
@@ -37,6 +39,8 @@ def take_command():
     except:
         print("sorry i didn't hear")
     return command
+    
+    
 while(True):
   user_command=take_command()
   #print(user_command)
@@ -44,21 +48,30 @@ while(True):
   if 'close' in user_command:
       print('see you again boss')
       speak('see you again boss')
+      
+      
   elif 'time' in user_command:
       curr_time = dt.datetime.now().strftime("%I:%M %p")
       print(curr_time)
       speak(curr_time)
+      
+      
   elif 'play' in user_command:
       user_command=user_command.replace('play ','')
       print('playing'+user_command)
       speak('playing' + user_command+'enjoy boss')
       pk.playonyt(user_command)
       break
+      
+      
   elif 'search' in user_command or 'google' in user_command:
       user_command=user_command.replace('search ','')
       user_command = user_command.replace('google', '')
       speak('searching '+ user_command)
       pk.search(user_command)
+      
+      
+      
   elif 'who is ' in user_command :
       info = wiki.summary(user_command,2)
       speak(info)
